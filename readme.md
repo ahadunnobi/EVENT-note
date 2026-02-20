@@ -33,6 +33,7 @@ Using the `addEventListener()` method is highly recommended because it keeps you
     document.getElementById("demo").innerHTML = Date();
   });
 </script>
+```
 # JavaScript Mouse Events
 
 JavaScript provides a variety of mouse events to capture user interactions with a pointing device. This allows you to execute code based on clicks, movement, and positioning.
