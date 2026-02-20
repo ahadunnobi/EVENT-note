@@ -33,3 +33,41 @@ Using the `addEventListener()` method is highly recommended because it keeps you
     document.getElementById("demo").innerHTML = Date();
   });
 </script>
+# JavaScript Mouse Events
+
+JavaScript provides a variety of mouse events to capture user interactions with a pointing device. This allows you to execute code based on clicks, movement, and positioning.
+
+## Common Mouse Events
+
+| Event | Description |
+| :--- | :--- |
+| **click** | Fires after both `mousedown` and `mouseup` occur on the same element. |
+| **dblclick** | Fires after two rapid clicks on the same element. |
+| **mousedown / mouseup** | Fire when a mouse button is pressed down or released. |
+| **mousemove** | Fires continuously as the mouse pointer moves over an element. |
+| **mouseover / mouseout** | Fire when the pointer enters or leaves an element (including children). |
+| **mouseenter / mouseleave** | Similar to over/out, but does **not** fire for descendants. |
+| **contextmenu** | Fires when the user attempts to open the right-click menu. |
+| **wheel** | Fires when the mouse wheel is rotated (scrolling/zooming). |
+| **drag events** | Series of events (`dragstart`, `dragend`, `dragover`) for drag-and-drop. |
+
+---
+
+## Mouse Position
+
+The `MouseEvent` interface provides an event object containing pointer coordinates and button states. Developers often use `clientX` and `clientY` to track the cursor relative to the viewport.
+
+
+
+### Example: Tracking Coordinates
+
+```html
+<p id="demo">Move the mouse in this window!</p>
+
+<script>
+  // Listen for mousemove on the entire document
+  document.addEventListener("mousemove", function (event) {
+    document.getElementById("demo").innerHTML = 
+      "X: " + event.clientX + " Y: " + event.clientY;
+  });
+</script>
