@@ -72,3 +72,49 @@ The `MouseEvent` interface provides an event object containing pointer coordinat
       "X: " + event.clientX + " Y: " + event.clientY;
   });
 </script>
+```
+# JavaScript Keyboard Events
+
+Keyboard events occur when a user interacts with the keyboard. These events allow you to capture specific key presses and values.
+
+## Common Keyboard Events
+
+| Event | Description |
+| :--- | :--- |
+| **keydown** | Fires when a key is first pressed down. |
+| **keyup** | Fires when a key is released. |
+| **keypress** | (Deprecated) Only fires for character keys. Developers are advised to use `keydown` or `keyup` instead. |
+
+---
+
+## Key Properties
+
+The `KeyboardEvent` object provides properties to identify which key was involved:
+
+| Property | Description | Example (Pressing 'Z') |
+| :--- | :--- | :--- |
+| **event.key** | Returns the value of the key (can vary by language/Shift). | `"z"` or `"Z"` |
+| **event.code** | Returns the physical key code (constant regardless of language). | `"KeyZ"` |
+
+---
+
+## Example: The `keydown` Event
+
+Using `event.key` to detect which key the user pressed:
+
+## Note: 
+ keypress does not fire for control keys (like Alt or Backspace). For consistent behavior across all keys, always use keydown. 
+```html
+<input id="k" type="text" placeholder="Press a key">
+<p id="demo"></p>
+
+<script>
+  const k = document.getElementById("k");
+
+  // Listen for keydown on the input field
+  k.addEventListener("keydown", function (event) {
+    // Display the specific key value
+    document.getElementById("demo").innerHTML = "You pressed: " + event.key;
+  });
+</script>
+```
