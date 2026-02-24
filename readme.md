@@ -118,3 +118,243 @@ Using `event.key` to detect which key the user pressed:
   });
 </script>
 ```
+
+# JavaScript DOM: Event Bubbling, Delegation & Propagation Control
+
+## 📌 Overview
+
+Understanding how DOM events flow is essential for writing efficient and maintainable JavaScript.
+
+This guide covers:
+
+- Event Bubbling  
+- stopPropagation() & stopImmediatePropagation()  
+- Event Delegation  
+- event.target vs event.currentTarget  
+
+---
+
+# 🔁 Event Bubbling
+
+## 🔎 Definition
+
+**Event Bubbling** is the default behavior where an event starts from the target element and propagates upward through its ancestors in the DOM tree.
+
+### 📊 Flow Order
+
+```
+Target → Parent → Grandparent → document → window
+```
+
+## 🧠 Why It Matters
+
+- Enables event delegation
+- Allows parent elements to respond to child events
+- Can cause unintended behavior if not controlled
+
+---
+
+## 💻 Example: Event Bubbling
+
+### HTML
+```html
+<div id="parent">
+  <button id="child">Click Me</button>
+</div>
+```
+
+### JavaScript
+```js
+document.getElementById("parent").addEventListener("click", () => {
+  console.log("Parent clicked");
+});
+
+document.getElementById("child").addEventListener("click", () => {
+  console.log("Button clicked");
+});
+```
+
+### 🖱 Output
+```
+Button clicked
+Parent clicked
+```
+
+---
+
+# 🛑 Stopping Propagation
+
+Sometimes you don’t want an event to bubble up to parent elements.
+
+---
+
+## 🔧 stopPropagation()
+
+Stops the event from moving to parent elements.
+
+### JavaScript
+```js
+document.getElementById("child").addEventListener("click", (event) => {
+  event.stopPropagation();
+  console.log("Button clicked only");
+});
+```
+
+### 🖱 Output
+```
+Button clicked only
+```
+
+✔ Parent handler does NOT run.
+
+---
+
+## 🔧 stopImmediatePropagation()
+
+Stops:
+- Event bubbling
+- Other listeners on the same element
+
+### JavaScript
+```js
+const btn = document.getElementById("child");
+
+btn.addEventListener("click", (e) => {
+  e.stopImmediatePropagation();
+  console.log("First listener");
+});
+
+btn.addEventListener("click", () => {
+  console.log("Second listener (won't run)");
+});
+```
+
+### 🖱 Output
+```
+First listener
+```
+
+---
+
+# 🧩 Event Delegation
+
+## 🔎 Definition
+
+**Event Delegation** is a technique where a single parent listener handles events for multiple child elements.
+
+Instead of attaching listeners to each child, you attach one listener to the parent.
+
+## 🧠 Why Use It?
+
+- Improves performance
+- Works for dynamically added elements
+- Reduces memory usage
+
+---
+
+## ❌ Without Delegation (Inefficient)
+
+```js
+document.querySelectorAll(".item").forEach(item => {
+  item.addEventListener("click", () => {
+    console.log("Item clicked");
+  });
+});
+```
+
+❗ Problem: Newly added elements will not have event listeners.
+
+---
+
+## ✅ With Event Delegation (Recommended)
+
+### HTML
+```html
+<ul id="list">
+  <li class="item">Item 1</li>
+  <li class="item">Item 2</li>
+  <li class="item">Item 3</li>
+</ul>
+```
+
+### JavaScript
+```js
+document.getElementById("list").addEventListener("click", (event) => {
+  if (event.target.classList.contains("item")) {
+    console.log(event.target.textContent + " clicked");
+  }
+});
+```
+
+### 🖱 Output
+```
+Item 1 clicked
+Item 2 clicked
+Item 3 clicked
+```
+
+✔ Works for future elements too.
+
+---
+
+## ➕ Delegation with Dynamically Added Elements
+
+```js
+const list = document.getElementById("list");
+
+list.addEventListener("click", (event) => {
+  if (event.target.matches(".item")) {
+    console.log("Clicked:", event.target.textContent);
+  }
+});
+
+// Add new item dynamically
+const newItem = document.createElement("li");
+newItem.className = "item";
+newItem.textContent = "Item 4";
+list.appendChild(newItem);
+```
+
+✔ Clicking **Item 4** still works.
+
+---
+
+# 🎯 event.target vs event.currentTarget
+
+| Property | Meaning |
+|---------|--------|
+| event.target | Actual element clicked |
+| event.currentTarget | Element with the listener |
+
+### Example
+```js
+const list = document.getElementById("list");
+
+list.addEventListener("click", (event) => {
+  console.log("Target:", event.target);
+  console.log("Listener attached to:", event.currentTarget);
+});
+```
+
+---
+
+# 🧠 Best Practices
+
+- Use event delegation for large lists
+- Use stopPropagation carefully
+- Prefer `matches()` or `classList.contains()` for filtering
+- Avoid attaching too many listeners
+
+---
+
+# 🧾 Quick Summary
+
+| Concept | Purpose |
+|--------|--------|
+| Event Bubbling | Event moves upward in DOM |
+| stopPropagation() | Stops bubbling |
+| stopImmediatePropagation() | Stops bubbling + same-element listeners |
+| Event Delegation | Parent handles child events efficiently |
+
+---
+
