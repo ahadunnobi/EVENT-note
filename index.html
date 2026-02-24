@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Bubbling & Delegation Practice</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <h1>JavaScript Event Practice</h1>
+
+  <!-- ========================= -->
+  <!-- Practice 1: Event Bubbling -->
+  <!-- ========================= -->
+  <section>
+    <h2>1. Event Bubbling</h2>
+    <div id="parent" class="box">
+      Parent Div
+      <button id="child">Click Me</button>
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Practice 2: stopPropagation -->
+  <!-- ========================= -->
+  <section>
+    <h2>2. stopPropagation()</h2>
+    <div id="box" class="box">
+      Box Container
+      <button id="stopBtn">Stop Bubbling</button>
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Practice 3: stopImmediatePropagation -->
+  <!-- ========================= -->
+  <section>
+    <h2>3. stopImmediatePropagation()</h2>
+    <button id="multiListener">Click Me</button>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Practice 4: Event Delegation -->
+  <!-- ========================= -->
+  <section>
+    <h2>4. Event Delegation</h2>
+    <ul id="list">
+      <li class="item">Apple</li>
+      <li class="item">Banana</li>
+      <li class="item">Mango</li>
+    </ul>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Practice 5: Dynamic Delegation -->
+  <!-- ========================= -->
+  <section>
+    <h2>5. Dynamic Elements</h2>
+    <ul id="dynamicList">
+      <li class="dyn-item">Item 1</li>
+    </ul>
+    <button id="addItem">Add Item</button>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Practice 6: target vs currentTarget -->
+  <!-- ========================= -->
+  <section>
+    <h2>6. event.target vs event.currentTarget</h2>
+    <div id="outer" class="box">
+      Outer Div
+      <button id="inner">Inner Button</button>
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- Practice 7: Todo Delegation -->
+  <!-- ========================= -->
+  <section>
+    <h2>7. Todo List Delegation</h2>
+    <ul id="todoList">
+      <li>Task 1 <button class="delete">X</button></li>
+      <li>Task 2 <button class="delete">X</button></li>
+    </ul>
+  </section>
+
+  <script src="practice.js"></script>
+</body>
+</html>
