@@ -9,13 +9,7 @@
 // ✅ PRACTICE 1: Event Bubbling
 ///////////////////////////////////////////////////////////////
 
-/*
-HTML REQUIRED:
 
-<div id="parent">
-  <button id="child">Click Me</button>
-</div>
-*/
 
 const parent = document.getElementById("parent");
 const child = document.getElementById("child");
@@ -38,13 +32,7 @@ if (parent && child) {
 // ✅ PRACTICE 2: stopPropagation()
 ///////////////////////////////////////////////////////////////
 
-/*
-HTML REQUIRED:
 
-<div id="box">
-  <button id="stopBtn">Stop Bubbling</button>
-</div>
-*/
 
 const box = document.getElementById("box");
 const stopBtn = document.getElementById("stopBtn");
@@ -68,11 +56,6 @@ if (box && stopBtn) {
 // ✅ PRACTICE 3: stopImmediatePropagation()
 ///////////////////////////////////////////////////////////////
 
-/*
-HTML REQUIRED:
-
-<button id="multiListener">Click Me</button>
-*/
 
 const multiBtn = document.getElementById("multiListener");
 
@@ -93,15 +76,7 @@ if (multiBtn) {
 // ✅ PRACTICE 4: Event Delegation (Basic)
 ///////////////////////////////////////////////////////////////
 
-/*
-HTML REQUIRED:
 
-<ul id="list">
-  <li class="item">Apple</li>
-  <li class="item">Banana</li>
-  <li class="item">Mango</li>
-</ul>
-*/
 
 const list = document.getElementById("list");
 
@@ -119,15 +94,7 @@ if (list) {
 // ✅ PRACTICE 5: Delegation with Dynamic Elements
 ///////////////////////////////////////////////////////////////
 
-/*
-HTML REQUIRED:
 
-<ul id="dynamicList">
-  <li class="dyn-item">Item 1</li>
-</ul>
-
-<button id="addItem">Add Item</button>
-*/
 
 const dynamicList = document.getElementById("dynamicList");
 const addItemBtn = document.getElementById("addItem");
@@ -155,13 +122,6 @@ if (dynamicList && addItemBtn) {
 // ✅ PRACTICE 6: event.target vs event.currentTarget
 ///////////////////////////////////////////////////////////////
 
-/*
-HTML REQUIRED:
-
-<div id="outer">
-  <button id="inner">Click</button>
-</div>
-*/
 
 const outer = document.getElementById("outer");
 const inner = document.getElementById("inner");
@@ -183,14 +143,6 @@ if (outer && inner) {
 // ✅ PRACTICE 7: Real-World Delegation (Todo List)
 ///////////////////////////////////////////////////////////////
 
-/*
-HTML REQUIRED:
-
-<ul id="todoList">
-  <li>Task 1 <button class="delete">X</button></li>
-  <li>Task 2 <button class="delete">X</button></li>
-</ul>
-*/
 
 const todoList = document.getElementById("todoList");
 
